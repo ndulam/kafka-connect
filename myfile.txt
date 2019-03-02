@@ -1,0 +1,44 @@
+package model;
+
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.avro.AvroFactory;
+import com.fasterxml.jackson.dataformat.avro.AvroSchema;
+import com.fasterxml.jackson.dataformat.avro.schema.AvroSchemaGenerator;
+
+public class myTestDB {
+
+	public static void main(String[] args) throws JsonMappingException 
+	{
+	
+		ObjectMapper mapper = new ObjectMapper(new AvroFactory());
+
+		AvroSchemaGenerator visitor = new AvroSchemaGenerator();
+
+		mapper.acceptJsonFormatVisitor(Person.class, visitor);
+
+		AvroSchema schema = visitor.getGeneratedSchema();
+
+		System.out.println("this is the schema " + schema.getAvroSchema().toString());
+		
+		
+		
+	}
+
+}
+
+
+<dependency>
+    <groupId>com.fasterxml.jackson.dataformat</groupId>
+    <artifactId>jackson-dataformat-avro</artifactId>
+    <version>2.8.6</version>
+    </dependency>
+<dependency>
+
+
+http://shengwangi.blogspot.com/2014/12/how-to-create-java-classes-from-tables.html
+http://shengwangi.blogspot.com/2014/12/how-to-add-oracle-db-connection-in-eclipse.html
+
+
+
+
